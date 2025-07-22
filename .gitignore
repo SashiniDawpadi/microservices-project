@@ -1,0 +1,49 @@
+## Ignore build results
+bin/
+obj/
+
+## Ignore Rider project files
+.idea/
+
+## Ignore Visual Studio Code settings
+.vscode/
+
+## User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Auto-generated files
+Generated_Code/
+
+## NuGet packages
+*.nupkg
+packages/
+# Uncomment if using the NuGet Package Restore feature
+#*.nupkg
+#project.lock.json
+#project.fragment.lock.json
+
+## Logs
+*.log
+
+## OS-generated files
+.DS_Store
+Thumbs.db
+
+## ASP.NET Core secrets
+secrets.json
+
+## dotnet watch
+**/appsettings.*.json
+launchSettings.json
+
+## Others
+*.db
+*.db-shm
+*.db-wal
+
+# Docker
+docker-compose.override.yml
+.env
