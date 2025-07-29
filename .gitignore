@@ -1,12 +1,25 @@
-# Ignore build outputs
-**/bin/
-**/obj/
-
-# Ignore user-specific files
+## Ignore build outputs
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
+
+## Ignore NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+*.symbols.nupkg
+packages/
+.nuget/
 
 # Ignore VSCode settings
 .vscode/
@@ -25,3 +38,5 @@
 
 # Ignore appsettings secrets if needed
 appsettings.Development.json
+
+.fake
