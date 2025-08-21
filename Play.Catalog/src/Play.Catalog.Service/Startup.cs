@@ -5,8 +5,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Play.Catalog.Service.Entities;
+using Play.Catalog.Service.Settings;
 using Play.Common.MongoDB;
 using Play.Common.Settings;
+using MassTransit;
+using static MassTransit.IBusControl;
+// using static MassTransit.Definition;
+
+
+// why the above using statement is not working ?????
+
+// I want to run this project online and cehck for these issues. 
+
+
+
+
 
 namespace Play.Catalog.Service
 {
@@ -29,6 +42,18 @@ namespace Play.Catalog.Service
 
             services.AddMongo()
             .AddMongoRepository<Item>("items");
+
+            services.AddMassTransit(x => 
+            {
+                x.UsingRabbitMq((context, configurator) => 
+                {
+                    var rabbitMQSettings = Configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
+                    configurator.Host(rabbitMQSettings.Host);
+                    configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName,false));
+                });
+            });
+
+            // services.AddMassTransitHostedService();
 
             services.AddControllers(options =>
             {
